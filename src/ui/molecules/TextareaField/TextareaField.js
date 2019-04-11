@@ -85,6 +85,7 @@ export const TextareaField = props => {
 }
 
 TextareaField.propTypes = {
+  name: PropTypes.string,
   value: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   label: PropTypes.string,

@@ -6,7 +6,7 @@ export const IconCheckboxOff = ({ color }) => (
     <rect
       x={2.5}
       y={2.5}
-      width={19}
+      width={19} 
       height={19}
       rx={1.5}
       stroke={color ? color : '#D3D3D3'}

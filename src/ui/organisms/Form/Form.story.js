@@ -50,7 +50,7 @@ storiesOf('ui/organisms', module).add('Form', () => (
         <HBox />
         <ButtonAccent disabled={!props.isValid} onPress={props.handleSubmit}>
           Send
-        </ButtonAccent>
+         </ButtonAccent>
       </form>
     )}
   />

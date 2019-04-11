@@ -6,41 +6,61 @@ import { VBox, Flex1 } from '@ui/atoms'
 import { Body2 } from '@ui/atoms/Typography'
 import { CheckboxField } from '@ui/molecules'
 
-const Container = styled.div`
+const Container = styled.label`
   display: flex;
   flex-direction: row;
   align-items: center;
 `
 
-export const CheckboxWithText = ({
-  children,
-  value,
-  onPress,
-  error,
-  disabled,
-}) => (
-  <Container onClick={typeof children === 'string' ? onPress : undefined}>
-    <CheckboxField
-      value={value}
-      error={error}
-      disabled={disabled}
-      onPress={typeof children === 'string' ? undefined : onPress}
-    />
-    <VBox />
-    {typeof children === 'string' ? (
-      <Flex1>
-        <Body2>{children}</Body2>
-      </Flex1>
-    ) : (
-      children
-    )}
-  </Container>
-)
+const Input = styled.input`
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+`
+
+export class CheckboxWithText extends React.Component {
+  handleChange = e => {
+    const { onClick, value } = this.props
+
+    if (onClick) {
+      onClick(value)
+    }
+  }
+
+  render() {
+    const { children, error, name, disabled, value } = this.props
+    return (
+      <Container>
+        <Input
+          type="checkbox"
+          name={name}
+          checked={value || false}
+          onChange={this.handleChange}
+          value={value || false}
+          disabled={disabled}
+        />
+        <CheckboxField value={value} error={error} disabled={disabled} />
+        <VBox />
+        {typeof children === 'string' ? (
+          <Flex1>
+            <Body2>{children}</Body2>
+          </Flex1>
+        ) : (
+          children
+        )}
+      </Container>
+    )
+  }
+}
 
 CheckboxWithText.propTypes = {
   children: PropTypes.node,
   value: PropTypes.bool,
-  onPress: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   error: PropTypes.string,
   disabled: PropTypes.bool,
 }
