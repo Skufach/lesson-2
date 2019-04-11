@@ -51,6 +51,7 @@ react-router-modal https://github.com/davidmfoley/react-router-modal
 
 - Компонент выбора пола 3 часа (без вывода в консоль)
 - Checkbox/CheckboxWithText 2 часа
-- Валидация 30 мин
+- Реализация 5 экрана 1,5 часа 
 - Подключение formik и yup 15 мин
+- Валидация 45 мин
 - При сабмите формы выводить данные формы в консоль 30 мин
